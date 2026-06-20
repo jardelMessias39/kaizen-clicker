@@ -1,5 +1,13 @@
+let lastClickTime = 0;
+
 export const playSound = (type: 'click' | 'buy' | 'error') => {
   try {
+    const now = Date.now();
+    if (type === 'click') {
+      if (now - lastClickTime < 50) return; // limit to max 20 clicks per second for audio
+      lastClickTime = now;
+    }
+    
     const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
     if (!AudioContext) return;
     

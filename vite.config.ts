@@ -15,8 +15,4 @@ export default defineConfig({
       include: ['src/engine/**'],
     },
   },
-  build: {
-    minify: 'esbuild',
-    cssMinify: 'esbuild'
-  }
 })

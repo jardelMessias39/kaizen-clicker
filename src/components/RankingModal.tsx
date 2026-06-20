@@ -10,14 +10,16 @@ interface RankingModalProps {
 
 export const RankingModal = ({ onClose }: RankingModalProps) => {
   const { points } = useGameStore();
-  const { scores, saveScore } = useRankingStore();
-  const [name, setName] = useState('');
+  const { scores, saveScore, currentPlayerName, setCurrentPlayerName } = useRankingStore();
+  const [name, setName] = useState(currentPlayerName || '');
   const [saved, setSaved] = useState(false);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     if (name.trim().length > 0) {
-      saveScore(name.trim(), Math.floor(points));
+      const trimmedName = name.trim();
+      setCurrentPlayerName(trimmedName);
+      saveScore(trimmedName, Math.floor(points));
       setSaved(true);
     }
   };

@@ -2,10 +2,21 @@ import { useRankingStore } from '../store/rankingStore';
 import { formatNumber } from '../utils/formatters';
 import { Trophy } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { useGameStore } from '../store/gameStore';
 
 export const RankingTicker = ({ onClick }: { onClick: () => void }) => {
-  const { scores } = useRankingStore();
+  const { scores, currentPlayerName, saveScore } = useRankingStore();
   
+  useEffect(() => {
+    if (!currentPlayerName) return;
+    const interval = setInterval(() => {
+      const currentPoints = Math.floor(useGameStore.getState().points);
+      saveScore(currentPlayerName, currentPoints);
+    }, 15000); // 15 seconds for testing
+    return () => clearInterval(interval);
+  }, [currentPlayerName, saveScore]);
+
   if (scores.length === 0) return null;
 
   const tickerItems = scores.map((s, i) => {

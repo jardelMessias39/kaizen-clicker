@@ -7,7 +7,9 @@ export interface ScoreEntry {
 
 interface RankingStore {
   scores: ScoreEntry[];
+  currentPlayerName: string | null;
   saveScore: (name: string, score: number) => void;
+  setCurrentPlayerName: (name: string) => void;
 }
 
 const RANKING_KEY = 'kaizen-clicker-ranking';
@@ -43,6 +45,11 @@ const loadScores = (): ScoreEntry[] => {
 
 export const useRankingStore = create<RankingStore>((set) => ({
   scores: loadScores(),
+  currentPlayerName: localStorage.getItem('kaizen-clicker-player') || null,
+  setCurrentPlayerName: (name: string) => {
+    localStorage.setItem('kaizen-clicker-player', name);
+    set({ currentPlayerName: name });
+  },
   saveScore: (name: string, score: number) => {
     set((state) => {
       const newScores = [...state.scores];

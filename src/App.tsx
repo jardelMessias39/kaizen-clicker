@@ -21,7 +21,7 @@ function App() {
         
         <div className="flex flex-col flex-1 h-full relative overflow-y-auto bg-slate-950 pb-12">
           <FactoryDisplay />
-          <div className="mt-20">
+          <div className="mt-14">
             <Dashboard />
           </div>
         </div>

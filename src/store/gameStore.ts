@@ -80,7 +80,7 @@ const checkAchievements = (state: GameState, stats: DerivedStats) => {
   }
 };
 
-export const useGameStore = create<GameStore>((set, get) => {
+export const useGameStore = create<GameStore>((set) => {
   const loadedState = loadState();
 
   return {

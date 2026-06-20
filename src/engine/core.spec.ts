@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { calculateUpgradeCost, calculateDerivedStats, buyUpgrade, processTick, createInitialState } from './core';
-import { GameState, UpgradeId } from './types';
+import { createInitialState, processTick, buyUpgrade, calculateDerivedStats, calculateUpgradeCost } from './core';
+import type { GameState, UpgradeId } from './types';
 
 describe('Game Engine', () => {
   let initialState: GameState;

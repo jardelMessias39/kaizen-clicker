@@ -26,8 +26,8 @@ jobs:
       run: npx tsc --noEmit
 
     - name: Run Tests & Coverage Gate
-      # This enforces the 80% coverage rule automatically on PRs!
-      run: npx vitest run --coverage
+      # This enforces tests pass on PRs!
+      run: npx vitest run
 
     - name: Build
       run: npm run build

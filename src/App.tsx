@@ -15,11 +15,11 @@ function App() {
     <div className="flex flex-col h-screen w-full bg-slate-900 overflow-hidden font-sans text-slate-200">
       <RankingTicker onClick={() => setShowRanking(true)} />
       
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-col lg:flex-row flex-1 overflow-y-auto lg:overflow-hidden">
         <Toaster position="bottom-left" />
         {showRanking && <RankingModal onClose={() => setShowRanking(false)} />}
         
-        <div className="flex flex-col flex-1 h-full relative overflow-y-auto bg-slate-950 pb-12">
+        <div className="flex flex-col flex-1 relative bg-slate-950 pb-12 w-full">
           <FactoryDisplay />
           <div className="mt+1
           ">

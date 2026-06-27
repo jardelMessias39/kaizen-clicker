@@ -48,7 +48,7 @@ export const FactoryDisplay = () => {
   const pps = stats.speed * stats.oee * (1 - stats.defectRate);
 
   return (
-    <div className="flex-1 min-h-[600px] flex flex-col p-8 relative overflow-hidden bg-slate-900">
+    <div className="flex-1 min-h-[500px] lg:min-h-[600px] flex flex-col p-4 lg:p-8 relative overflow-hidden bg-slate-900 w-full">
       
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
